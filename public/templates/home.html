@@ -1,0 +1,27 @@
+<h2>Microblog by LMG</h2>
+<hr>
+<p ng-if="home.posts.length === 0">No posts yet.</p>
+
+<div ng-if="home.posts.length > 0">
+	<div ng-repeat="post in home.posts">
+		<p><strong style="color:yellow; font-size: 18px;">{{post.title}}</strong> - {{post.content}}</p><br>
+	</div>
+</div>
+
+<div ng-show="main.currentUser()"> <!-- only shows up if there's a current user -->
+	<br>
+	<h4>Add New Post</h4>
+	<hr>
+	<form ng-show="main.currentUser()" ng-submit="home.createPost()">
+		<div class="form-group">
+			<label for="post-title">Post Title</label>
+			<input type="text" ng-model="home.new_post.title" class="form-control" id="post-title" placeholder="Brillant Title" required>
+		</div>
+		<div class="form-group">
+			<label for="post-content">Post Content</label>
+			<textarea ng-model="home.new_post.content" class="form-control" id="post-content" placeholder="Put it all here..." required></textarea>
+			</div>
+			<input type="submit" value="Add post" class="btn btn-info">
+			</form>
+	<!-- TODO #15: Post Form here -->
+</div>
