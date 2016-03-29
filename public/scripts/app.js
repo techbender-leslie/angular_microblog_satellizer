@@ -115,6 +115,7 @@ HomeController.$inject = ["$http"]; // minification protection
 function HomeController ($http) {
   var vm = this;
   vm.posts = [];
+  // vm.post = Post.query();
   vm.new_post = {}; // form data
 
   $http.get('/api/posts')
@@ -129,6 +130,18 @@ function HomeController ($http) {
         vm.posts.push(response.data);
       });
   };
+
+  vm.deletePost = function(post) {
+    // Post.remove({ id: post._id });
+    // var postIndex = vm.posts.indexOf(post);
+    // vm.posts.splice(postIndex, 1);
+
+    $http.delete("/api/posts/" + post._id)
+      .then(function(response) {
+        var postIndex = vm.posts.indexOf(post);
+        vm.posts.splice(postIndex, 1);
+      });
+}
 }
 
 LoginController.$inject = ["$location", "Account"]; // minification protection

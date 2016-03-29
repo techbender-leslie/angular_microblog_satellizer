@@ -66,7 +66,7 @@ app.post('/api/posts', auth.ensureAuthenticated, function (req, res) {
     var newPost = new Post(req.body);
     newPost.save(function (err, savedPost) {
       if (err) {
-        res.status(500).json({ error: er.message});
+        res.status(500).json({ error: err.message});
       } else {
         user.posts.push(newPost);
         user.save();
@@ -76,6 +76,21 @@ app.post('/api/posts', auth.ensureAuthenticated, function (req, res) {
   });
 });
 
+app.delete('/api/posts/:id', function (req, res) {
+  User.findById(req.user, function(err, user) {
+  var id= req.params.id;
+  console.log("deleting event", id);
+
+  Post.remove({_id: id}, function (err) {
+    if (err) {
+      res.status(500).json({ error: err.message});
+    } else {
+      console.log("removing: ", id);
+      res.status(200).send();
+    }
+  });
+  });
+});
 
 /*
  * Auth Routes

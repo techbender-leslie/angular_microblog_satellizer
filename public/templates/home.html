@@ -1,27 +1,29 @@
-<h2>Microblog by LMG</h2>
-<hr>
-<p ng-if="home.posts.length === 0">No posts yet.</p>
-
-<div ng-if="home.posts.length > 0">
-	<div ng-repeat="post in home.posts">
-		<p><strong style="color:yellow; font-size: 18px;">{{post.title}}</strong> - {{post.content}}</p><br>
-	</div>
-</div>
-
 <div ng-show="main.currentUser()"> <!-- only shows up if there's a current user -->
 	<br>
-	<h4>Add New Post</h4>
-	<hr>
+	<h3>Add a New Post:</h3>
 	<form ng-show="main.currentUser()" ng-submit="home.createPost()">
 		<div class="form-group">
 			<label for="post-title">Post Title</label>
-			<input type="text" ng-model="home.new_post.title" class="form-control" id="post-title" placeholder="Brillant Title" required>
+			<input type="text" ng-model="home.new_post.title" class="form-control" id="post-title" required>
 		</div>
 		<div class="form-group">
 			<label for="post-content">Post Content</label>
-			<textarea ng-model="home.new_post.content" class="form-control" id="post-content" placeholder="Put it all here..." required></textarea>
+			<textarea ng-model="home.new_post.content" class="form-control" id="post-content" required></textarea>
 			</div>
 			<input type="submit" value="Add post" class="btn btn-info">
 			</form>
+			<br>
 	<!-- TODO #15: Post Form here -->
+</div><h1>Microblog by LMG</h1>
+<hr>
+<p ng-if="home.posts.length === 0">No posts yet</p>
+
+<div ng-if="home.posts.length > 0">
+	<div ng-repeat="post in home.posts">
+	<div class="pull-right">
+		<a href="#" ng-click="home.deletePost(post)"><p><i class="fa fa-times"></i></p></a>
+	</div>
+		<p><strong style="color:yellow; font-size: 18px;">{{post.title}}</strong><br>{{post.content}}</p>
+		<hr>
+	</div>
 </div>
