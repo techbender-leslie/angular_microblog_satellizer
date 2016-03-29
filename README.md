@@ -1,4 +1,4 @@
-# <img src="https://cloud.githubusercontent.com/assets/7833470/10899314/63829980-8188-11e5-8cdd-4ded5bcb6e36.png" height="60"> Angular Auth with Satellizer - Week 11 App
+# Angular Auth with Satellizer
 
 **Objective:** Implement Angular authentication with Satellizer. Fully functional sign up, log in, and log out functionality. The course of this project took an entire afternoon. I improved upon the app and included a delete function for the posts.
 
